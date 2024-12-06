@@ -77,15 +77,15 @@ if __name__ == "__main__":
 
     possibles = []
 
-    # print(path)
-
     for i in range(len(path)-2):
         # print('_______________________________')
         if i % 10 == 0:
             print(i)
-        infinite, _ = arpenter(path[i][0], path[i][1], x_lim, y_lim, obstacles + [path[i+1][0]], path[:i])
-        if infinite:
-            possibles.append(path[i+1][0])
+
+        if path[i+1][0] not in [a[0] for a in path[:i]]:
+            infinite, _ = arpenter(path[i][0], path[i][1], x_lim, y_lim, obstacles + [path[i+1][0]], path[:i])
+            if infinite:
+                possibles.append(path[i+1][0])
 
     # print(possibles)
     print(len(possibles))

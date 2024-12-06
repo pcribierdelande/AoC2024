@@ -37,7 +37,6 @@ def get_next(current, direction, obstacles):
 
 def check_finish(new, x_lim, y_lim):
     x,y = new
-
     return (x < 0 or y < 0 or x >= x_lim or y >= y_lim)
 
 def arpenter(current, direction, x_lim, y_lim, obstacles):
@@ -47,6 +46,7 @@ def arpenter(current, direction, x_lim, y_lim, obstacles):
         current, direction = get_next(current, direction, obstacles)
         path.append(current)
     return path
+
 
 if __name__ == "__main__":
 
