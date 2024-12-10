@@ -1,5 +1,5 @@
 def read_input(input_file: str) -> tuple:
-    with open(input_file, encoding='utf8') as f:
+    with open(input_file, encoding="utf8") as f:
         content = f.readlines()
     return content
 
