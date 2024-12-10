@@ -1,25 +1,28 @@
-from itertools import product 
+from ast import literal_eval
+from itertools import product
+
 
 def read_input(input_file: str) -> list[str]:
-
     result = []
-    with open(input_file) as f:
+    with open(input_file, encoding='utf8') as f:
         for line in f.readlines():
-            colons_split = line.split(':')
-            c = colons_split[1].strip().split(' ')
+            colons_split = line.split(":")
+            c = colons_split[1].strip().split(" ")
             result.append(colons_split[:1] + c)
     return result
 
 
 def read_equation(equation: list, operator: list) -> int:
-    current = str(eval(equation[0] + operator[0] + equation[1]))
+    current = str(literal_eval(equation[0] + operator[0] + equation[1]))
     for nbr, op in zip(equation[2:], operator[1:]):
-        current = str(eval(current + op + nbr))
+        current = str(literal_eval(current + op + nbr))
     return int(current)
 
 
-def generate_all_combination_of_operators(length_equation: int, operators: list[str]) -> list[list[str]]:
-    return [list(i) for i in product(operators, repeat=length_equation-1)]
+def generate_all_combination_of_operators(
+    length_equation: int, operators: list[str]
+) -> list[list[str]]:
+    return [list(i) for i in product(operators, repeat=length_equation - 1)]
 
 
 def check_equation_can_be_ok(equation: list[str], operators: list[str]) -> bool:
@@ -41,18 +44,23 @@ def check_all_equations(equations: list[str], operators: list[str]) -> int:
 
     return res
 
+
 def level1(equations: list) -> int:
-    return check_all_equations(equations,  ['*', '+'])
+    return check_all_equations(equations, ["*", "+"])
 
 
 def level2(equations: list) -> int:
-    return check_all_equations(equations,  ['*', '+', ''])
+    return check_all_equations(equations, ["*", "+", ""])
 
 
-if __name__ == "__main__":
-    input_file = './Day07/input1.txt'
+def main():
+    input_file = "./Day07/input1.txt"
 
     equations = read_input(input_file)
 
-    print('level 1 : ', level1(equations=equations))
-    print('level 2 : ', level2(equations=equations))
+    print("level 1 : ", level1(equations=equations))
+    print("level 2 : ", level2(equations=equations))
+
+
+if __name__ == "__main__":
+    main()

@@ -17,7 +17,7 @@ def level2() -> int:
 
 
 def main():
-    input_file = "./Day/input0.txt"
+    input_file = "./Day09/input0.txt"
 
     _ = read_input(input_file)
 
