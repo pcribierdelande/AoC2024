@@ -1,5 +1,3 @@
-import math
-import itertools
 from operator import itemgetter
 
 
@@ -24,7 +22,6 @@ def one_blink(stones_line: list[int]) -> list[int]:
 
 
 def stones_after_blinks(stone: int, blinks: int) -> None:
-
     if blinks == 1:
         if (stone, 1) not in dict_stones:
             dict_stones[(stone, 1)] = one_blink([stone])
@@ -46,17 +43,6 @@ def fill_dict():
             dict_stones[key] = len(dict_stones[key])
         elif isinstance(dict_stones[key][0], tuple):
             dict_stones[key] = sum([dict_stones[a] for a in dict_stones[key]])
-        else:
-            print("aaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-
-
-# def build_dict():
-# for a in range(10):
-#     stones_line = [a]
-#     stones_line = one_blink(stones_line)
-#     dict_stones[(a, 1)] = stones_line
-# for a in range(10):
-#     stones_after_blinks(a, 30)
 
 
 def level1(stones_line: list[int]) -> int:
@@ -68,7 +54,6 @@ def level1(stones_line: list[int]) -> int:
 
 def level2(stones_line) -> int:
     res = 0
-    # build_dict()
     for stone in stones_line:
         stones_after_blinks(stone, 75)
 
@@ -77,7 +62,6 @@ def level2(stones_line) -> int:
     for stone in stones_line:
         res += dict_stones[(stone, 75)]
     return res
-    # return nbr_stones_after_blinks(0, 25)
 
 
 def main():
