@@ -1,3 +1,4 @@
+from functools import cache
 from operator import itemgetter
 
 
@@ -20,7 +21,7 @@ def one_blink(stones_line: list[int]) -> list[int]:
             new_line.append(stone * 2024)
     return new_line
 
-
+@cache
 def stones_after_blinks(stone: int, blinks: int) -> None:
     if blinks == 1:
         if (stone, 1) not in dict_stones:

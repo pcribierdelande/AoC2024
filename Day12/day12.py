@@ -1,5 +1,7 @@
-import numpy as np
 import math
+from functools import cache
+
+import numpy as np
 
 
 def read_input(input_file: str) -> np.ndarray[str, str]:
